@@ -1,0 +1,34 @@
+/* Research detail and print additions; preserve the editorial Explore layout. */
+.place-story{margin-top:16px;padding:13px 0;border-top:1px solid var(--line)}
+.place-story .eyebrow{font-size:9px;margin-bottom:6px;color:var(--muted)}
+.navigation-note,.research-stamp{font-size:12px!important;color:var(--muted)}
+.practical-details{margin-top:10px}
+.practical-details summary{cursor:pointer;min-height:44px;padding:10px 0;font-weight:600;font-size:15px}
+.weather-table{width:100%;border-collapse:collapse;font-size:13px;line-height:1.4;text-align:left}
+.weather-table caption{text-align:left;padding:8px 0;font-size:12px;color:var(--muted)}
+.weather-table th,.weather-table td{border-bottom:1px solid var(--line);padding:9px 5px;vertical-align:top}
+.weather-table th{font-weight:600}
+.weather-table th:first-child{padding-left:0;white-space:nowrap}
+.restroom-list{padding-left:22px;margin:12px 0}
+.restroom-list li{padding:10px 0;border-top:1px solid var(--line)}
+.restroom-list h4{font:600 16px var(--sans);margin:0 0 7px}
+.restroom-list p{font-size:14px}
+.plan-section p+p{margin-top:9px}
+.plan-section a,.source-link{overflow-wrap:anywhere;max-width:100%}
+#plan-content .source-link{margin-right:10px}
+#print-essentials{display:none}
+@media(max-width:760px){.route-select-wrap select,.meetup-brief p>a{min-height:44px}.filter-bar{margin-right:0;padding-right:0}.route-toolbar{grid-template-columns:minmax(0,1fr) auto}.route-select-wrap{min-width:0}.route-select-wrap select{width:100%;max-width:225px}}
+@media print{
+ #print-essentials{display:block;break-before:page}
+ #print-essentials h2{font-size:22pt}
+ #print-essentials .plan-section{break-inside:avoid}
+ #print-essentials .plan-section p,#print-essentials .plan-section li,#print-essentials .weather-table,#print-essentials .restroom-list p{font-size:12pt}
+ #print-essentials .restroom-list h4{font-size:13pt}
+ #print-essentials summary{font-size:12pt}
+ .stop-actions{display:flex!important;margin:0}
+ .stop-actions button{display:none!important}
+ .stop-actions a{font-size:11pt}
+ .place-story{break-inside:avoid}
+ .place-story p{font-size:12pt}
+ .navigation-note,.research-stamp{font-size:10pt!important}
+}

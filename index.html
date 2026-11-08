@@ -1,12 +1,59 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow">
-<meta name="referrer" content="no-referrer">
-<title>Manhattan Walk Guide — Hosting Check</title>
-<style>body{font:1.1rem/1.6 system-ui,sans-serif;max-width:38rem;margin:12vh auto;padding:1.5rem;color:#16352c;background:#f7f3e9}h1{line-height:1.15}small{color:#52665e}</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173e35">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="A food-led Manhattan walk, from Inwood to the Battery. Sunday, November 8, 2026. A map, field guide, and room to wander.">
+  <title>Manhattan, on foot · November 8</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./practical.css">
+  <script defer src="./vendor/leaflet/leaflet.js"></script>
+  <script type="module" src="./app.js"></script>
 </head>
-<body><main><small>PUBLIC HOSTING CHECK</small><h1>Manhattan Walk Guide</h1><p>The public HTTPS hosting is being checked. The finished walk guide has not been published yet.</p><p>This page contains no personal information, tracking, account links, or private services.</p></main></body>
+<body>
+  <a class="skip-link" href="#field-guide">Skip to field guide</a>
+  <header class="masthead">
+    <a class="wordmark" href="#explore" aria-label="Manhattan, on foot — explore"><span class="walk-mark" aria-hidden="true">m<span>↘</span></span><span>Manhattan, <em>on foot.</em></span></a>
+    <div class="header-actions"><button class="quiet-button" id="share-button" type="button">Share <span aria-hidden="true">↗</span></button><button class="quiet-button desktop-plan" data-open-plan type="button">Essentials</button></div>
+  </header>
+  <main id="explore">
+    <section class="start-strip" aria-label="Start here">
+      <div><p class="eyebrow" id="walk-date">SUNDAY · NOVEMBER 8, 2026</p><h1>One island. Take your time.</h1></div>
+      <div class="meetup-brief"><span class="meetup-time">8:30 <small>AM meet</small></span><p><a id="meetup-link" href="https://www.google.com/maps/search/?api=1&query=Inwood-207+St+A+Broadway+and+West+207th+Street+New+York" target="_blank" rel="noopener noreferrer">Inwood–207 St A <span aria-hidden="true">↗</span></a><span>Broadway / W 207 street elevator · walk at 8:45</span></p></div>
+    </section>
+    <section class="route-toolbar" aria-label="Route choices">
+      <div class="route-select-wrap"><label for="route-select">THE WAY DOWN</label><select id="route-select" aria-describedby="route-summary"></select></div>
+      <p id="route-summary"></p>
+      <a id="saved-map-link" class="text-link" href="https://maps.app.goo.gl/aYMuLDd1MVHAo93v5" target="_blank" rel="noopener noreferrer">All saved options <span aria-hidden="true">↗</span></a>
+    </section>
+    <div class="explorer-layout">
+      <section class="map-column" aria-labelledby="map-title">
+        <div class="map-heading"><h2 id="map-title">The island, at a glance</h2><button id="fit-map" class="quiet-button" type="button">Reset view <span aria-hidden="true">↙↗</span></button></div>
+        <div class="map-frame" id="map-frame"><div id="map" aria-label="Interactive Manhattan walk map"></div><div id="map-error" class="map-error" hidden>Map unavailable. Every place is still linked in the field guide.</div><div class="map-badge" aria-hidden="true"><span>N</span>↑</div></div>
+        <div class="map-caption"><span class="line-key" aria-hidden="true"></span><p id="geometry-note">Schematic connections, not walking directions.</p></div>
+        <div class="map-bottom"><p>Food anchors. Good streets.<br><em>Everything else is a choose-your-own.</em></p><span aria-hidden="true">NORTH<br>↓<br>SOUTH</span></div>
+      </section>
+      <section class="guide-column" id="field-guide" aria-labelledby="guide-title">
+        <div class="guide-intro"><div><p class="eyebrow">THE FIELD GUIDE</p><h2 id="guide-title">Follow your appetite.</h2></div><p>An ambitious full-island day, not a promise to finish. The route is a thread—not a to-do list.</p></div>
+        <details class="practical-details route-navigation" id="walking-directions"><summary id="directions-summary">Named-place walking legs</summary><div id="directions-content"></div></details>
+        <div class="filter-bar" role="group" aria-label="Filter places"><button type="button" data-filter="recommended" aria-pressed="true">Main walk</button><button type="button" data-filter="all" aria-pressed="false">Everything</button><button type="button" data-filter="food" aria-pressed="false">Food</button><button type="button" data-filter="event" aria-pressed="false">Markets</button><button type="button" data-filter="architecture" aria-pressed="false">Architecture</button></div>
+        <div class="filter-status" id="filter-status" aria-live="polite"></div>
+        <div id="timeline"></div>
+        <section class="finish-note"><p class="eyebrow">THE BEST FINISH</p><h2>Whenever you’ve had enough.</h2><p>Stay for the Battery, peel off for dinner, or take the subway home. No sunset deadline. No catching up on missed pins.</p></section>
+      </section>
+    </div>
+    <section id="print-essentials" aria-label="Printable essentials"></section>
+  </main>
+  <footer class="site-footer"><p>A dated field guide · Sunday, November 8, 2026</p><p>Not live tracking. Hours and forecasts are dated snapshots.</p><button class="text-button" id="sources-button" type="button">Sources & map notes</button></footer>
+  <nav class="bottom-nav" aria-label="Quick navigation"><a href="#explore" data-nav="map"><span aria-hidden="true">⌖</span>Explore</a><a href="#field-guide" data-nav="guide"><span aria-hidden="true">≡</span>Field guide</a><button type="button" data-open-plan><span aria-hidden="true">↗</span>Essentials</button></nav>
+  <dialog id="plan-dialog" aria-labelledby="plan-title"><div class="dialog-heading"><div><p class="eyebrow">THE USEFUL THINGS</p><h2 id="plan-title">Before you set off.</h2></div><button class="close-button" data-close-dialog type="button" aria-label="Close essentials">×</button></div><div id="plan-content"></div><div class="dialog-actions"><button class="solid-button" id="print-button" type="button">Print field guide</button><button class="quiet-button" id="clear-visited" type="button">Clear visited marks</button></div><p class="privacy-note">Visited marks stay in this browser. No account, analytics, or location request. Map tiles load from OpenStreetMap.</p></dialog>
+  <dialog id="sources-dialog" aria-labelledby="sources-title"><div class="dialog-heading"><div><p class="eyebrow">READ THE SMALL PRINT</p><h2 id="sources-title">Sources & map notes.</h2></div><button class="close-button" data-close-dialog type="button" aria-label="Close sources">×</button></div><div id="sources-content"></div></dialog>
+  <dialog id="share-dialog" aria-labelledby="share-title"><div class="dialog-heading"><h2 id="share-title">Pass the walk along.</h2><button class="close-button" data-close-dialog type="button" aria-label="Close share">×</button></div><label for="share-url">This guide’s link</label><input id="share-url" type="url" readonly><p>Select and copy this link to share the guide.</p><button class="solid-button" data-close-dialog type="button">Done</button></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="noscript">This interactive guide needs JavaScript. Meet at 8:30 AM at the Inwood–207 St A street elevator, Broadway / W 207. Walk at 8:45. <a href="https://maps.app.goo.gl/aYMuLDd1MVHAo93v5">Open the saved map options.</a></p></noscript>
+</body>
 </html>
